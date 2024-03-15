@@ -1,8 +1,3 @@
----
-layout: default
-title: Your Website Title
----
-
 # About
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat libero nec dolor sagittis, sed molestie sapien feugiat. 
 
