@@ -2,3 +2,10 @@ title: Charlie Pugh
 logo: /assets/img/me.jpg
 description: Probabilistic machine learning in evolution and health
 theme: jekyll-theme-minimal
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      title: Charlie Pugh
+      image: /assets/img/me.jpg
