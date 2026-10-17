@@ -1,4 +1,201 @@
 ---
 ---
 
-@import "jekyll-theme-minimal";
+/* ---------- Tokens ---------- */
+
+:root {
+  --bg: #f2f5f8;
+  --ink: #141a22;
+  --muted: #5a6572;
+  --line: #dde3ea;
+  --accent: #2f5bd3;        /* cobalt */
+  --accent-soft: #dbe5fb;
+  --accent-2: #0f7c86;      /* teal */
+  --accent-2-soft: #d4ecee;
+
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117;
+    --ink: #e6ebf2;
+    --muted: #97a1ae;
+    --line: #232a33;
+    --accent: #7ea2ff;
+    --accent-soft: #18233d;
+    --accent-2: #4fc7cf;
+    --accent-2-soft: #12292c;
+  }
+}
+
+/* ---------- Base ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(60rem 40rem at 110% -10%, var(--accent-soft), transparent 60%),
+    radial-gradient(50rem 40rem at -20% 110%, var(--accent-2-soft), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--accent); color: var(--bg); }
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--accent); }
+
+p { margin: 0 0 1.1em; }
+
+strong { font-weight: 600; }
+
+h1, h2, h3 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+/* ---------- Layout ---------- */
+
+.wrapper {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 72px 32px;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 80px;
+}
+
+header {
+  position: sticky;
+  top: 72px;
+  align-self: start;
+}
+
+main { min-width: 0; }
+
+/* ---------- Sidebar ---------- */
+
+.avatar {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 28px;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  margin: 0 0 10px;
+}
+header h1 a { text-decoration: none; }
+header h1 a:hover { color: inherit; }
+
+.tagline {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1.9;
+}
+
+/* ---------- Content ---------- */
+
+main h2 {
+  font-size: 1.6rem;
+  margin: 56px 0 18px;
+}
+main h2:first-child { margin-top: 0; }
+
+main h3 {
+  font-size: 1.2rem;
+  margin: 2em 0 .6em;
+}
+
+/* Publication list */
+
+main ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+
+main li {
+  margin-bottom: 22px;
+  line-height: 1.55;
+  color: var(--muted);
+  font-size: .95rem;
+}
+main li p { margin: 0; }
+
+/* Paper title */
+main li > strong:first-child,
+main li > p > strong:first-child {
+  color: var(--ink);
+  font-size: 1.02rem;
+}
+main li > strong:first-child a,
+main li > p > strong:first-child a {
+  text-decoration: none;
+}
+
+/* Highlighted author name */
+main li strong:not(:first-child) { color: var(--ink); }
+
+/* Venue */
+main li em { color: var(--accent-2); }
+
+code {
+  font-family: var(--font-mono);
+  font-size: .88em;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--line);
+  margin: 48px 0;
+}
+
+footer {
+  margin-top: 80px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: .8rem;
+  color: var(--muted);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 40px 20px;
+  }
+  header { position: static; }
+  .avatar { max-width: 280px; }
+}
